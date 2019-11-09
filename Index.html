@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expressão Regular</title>
+
+    <script>
+
+        var string = "Melhor preço sem escalas R$ 1.367(1) Melhor preço com escalas R$ 994 (1)1 - Incluindo todas as taxas.";
+        string = string.replace('.', '');
+        string = string.replace(' ', '');
+        string = string.replace(/\D+/g, ';');
+        var numeros = string.split(";");
+
+        var valores = [];
+        numeros.forEach(function (numero) {
+            if (numero.length > 2) {
+                valores.push(parseFloat(numero));
+            }
+        });
+        var min = Math.min(...valores);
+        min = min.toFixed(2);
+        console.log("Melhor valor: " + min);
+        alert("Melhor valor: " + min);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
